@@ -27,6 +27,7 @@ namespace SoftwareSandy
         public  LogLogger log { set; get; }
         //SqlDatabase db;
         
+            //small change here
         public void ClaimScrubRead()
         {
             if (ConfigurationSettings.AppSettings["INPath"] != null)
