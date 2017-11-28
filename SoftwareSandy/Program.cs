@@ -546,69 +546,6 @@ namespace SoftwareSandy
                     //FinishTheEdits(lastConflictFound - 1, lastClaim, claimLinesList, dic, errLine);
                 }
                 ReviewClaimLineList(tw);
-                /*
-                //
-                // I may need to discard the claims that are not in this batch as I am adding every result again
-                //
-                loop = 2;
-                MergeFindings(dic, claimLinesList, thisRun);
-                var list = dic.Keys.ToList();
-                list.Sort();
-                lineCounter = 0;
-                
-                int pattern10372 = 0;
-                int numberOfEditLines = 0;
-                string lastClaimInLoop = string.Empty;
-
-                // Loop through keys.
-                foreach (var key in list)
-                {
-                    lineCounter++;
-                    Findings findings = dic[key];
-
-                    if(findings.id.CompareTo(lastClaimInLoop) != 0 && numberOfEditLines == pattern10372 && numberOfEditLines > 0)
-                    {
-                        tw.WriteLine("************ Claim {0} is clean ********", lastClaimInLoop);
-                    }
-                    if (findings.id.CompareTo(lastClaimInLoop) != 0)
-                    {
-                        pattern10372 = 0;
-                        numberOfEditLines = 0;
-                    }
-
-                    if (findings.claimIndex.Equals("0") && IsCleanClaim(findings.id, claimLinesList) ) 
-                    {
-                        tw.WriteLine("************ Claim {0} is clean ********", findings.id);
-                        numberOfEditLines = 0;
-                        pattern10372 = 0;
-                    }
-                    else
-                    if (!findings.claimIndex.Equals("0"))
-                    {
-                        string mMp = findings.editType;
-                        bool writeRecord = true;
-                        //if (findings.description.Contains("multiple procedure reduction") || findings.description.Contains("50%"))
-                        if ( findings.description.Contains("50%") && !findings.description.Contains("150%") )
-                        {
-                            mMp = "mMP";
-                            if (!findings.description.StartsWith("PNS"))
-                                writeRecord = false;
-                            //findings.description += " 50%";
-                        }
-                        numberOfEditLines++;
-                        if (findings.description.Contains("[Pattern 10372]"))
-                            pattern10372++;
-
-                        if (writeRecord && !findings.description.Contains("[Pattern 10372]") )
-                            tw.WriteLine("id {0} : Line {1} : {2} : {3} : {4} : {5}", findings.id,
-                                findings.claimIndex, findings.editType, mMp, findings.editConflit, findings.description);
-                    }
-                    
-                    lastClaimInLoop = findings.id;
-                }
-                if ( numberOfEditLines == pattern10372  )
-                    tw.WriteLine("************ Claim {0} is clean ********", lastClaimInLoop );
-                    */
                 optumFindings.Clear();
                 dic.Clear();
                 dic = null;
